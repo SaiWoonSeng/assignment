@@ -28,7 +28,7 @@ class _OnBoardingState extends State<OnBoarding> {
           },
           children: [
             Container(
-              color: Colors.amber,
+              color: Colors.white,
               child: Column(
                 children: [
                   Image.asset(
@@ -54,7 +54,7 @@ class _OnBoardingState extends State<OnBoarding> {
               ),
             ),
             Container(
-              color: Colors.amber,
+              color: Colors.white,
               child: Column(
                 children: [
                   Image.asset(
@@ -80,7 +80,7 @@ class _OnBoardingState extends State<OnBoarding> {
               ),
             ),
             Container(
-              color: Colors.amber,
+              color: Colors.white,
               child: Column(
                 children: [
                   Image.asset(
@@ -118,13 +118,14 @@ class _OnBoardingState extends State<OnBoarding> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0)),
                   primary: Colors.white,
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.amber,
                   minimumSize: const Size.fromHeight(80)),
               child: const Text(
                 'GET START',
                 style: TextStyle(fontSize: 24),
               ))
           : Container(
+              color: Colors.amber,
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               height: 80,
               child: Row(
@@ -138,7 +139,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         "SKIP",
                         style: TextStyle(
                             fontSize: 20,
-                            color: Colors.green,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -166,7 +167,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         "NEXT",
                         style: TextStyle(
                             fontSize: 20,
-                            color: Colors.green,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
                     )
