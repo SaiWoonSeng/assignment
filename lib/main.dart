@@ -1,8 +1,16 @@
+import 'package:assignment/onboarding.dart';
+import 'package:assignment/splash.dart';
 import 'package:flutter/material.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'login.dart';
 
-void main() {
+int? initScreen;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  initScreen = await preferences.getInt('initScreen');
+  await preferences.setInt('initScreen', 1);
   runApp(const MyApp());
 }
 
@@ -18,7 +26,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      initialRoute:
+          initScreen == 0 || initScreen == null ? 'onboard' : 'splash',
+      routes: {
+        'splash': (context) => const Splash(),
+        'onboard': (context) => const OnBoarding(),
+      },
     );
   }
 }
