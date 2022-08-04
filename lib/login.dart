@@ -1,4 +1,12 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
+import 'dart:convert';
+
+import 'package:assignment/home.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -176,11 +184,30 @@ class _LoginScreenState extends State<LoginScreen> {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
       ),
-      onPressed: () {},
+      onPressed: () {
+        signIn(_email!, _password!);
+      },
       child: const Text(
         "SING IN",
         style: TextStyle(color: Colors.white),
       ),
     );
+  }
+
+  signIn(String username, String password) async {
+    Map data = {'username': username, 'password': password};
+    Uri myUri = Uri.parse("http://test.ntrcarparts.xyz/api/delivery/login");
+    var jsonData;
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var respone = await http.post(myUri, body: data);
+    if (respone.statusCode == 200) {
+      jsonData = json.decode(respone.body);
+      setState(() {
+        sharedPreferences.setString("token", jsonData!['token']);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (BuildContext context) => const Home()),
+            (route) => false);
+      });
+    }
   }
 }

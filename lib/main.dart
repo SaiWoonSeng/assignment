@@ -2,14 +2,13 @@ import 'package:assignment/onboarding.dart';
 import 'package:assignment/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'login.dart';
 
 int? initScreen;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  initScreen = await preferences.getInt('initScreen');
+  initScreen = preferences.getInt('initScreen');
   await preferences.setInt('initScreen', 1);
   runApp(const MyApp());
 }

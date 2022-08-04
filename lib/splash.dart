@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:assignment/home.dart';
-import 'package:assignment/login.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -17,11 +16,12 @@ class _SplashState extends State<Splash> {
     super.initState();
 
     Timer(const Duration(seconds: 3), () {
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const Home()));
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber,
