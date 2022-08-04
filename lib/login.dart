@@ -203,7 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (respone.statusCode == 200) {
       jsonData = json.decode(respone.body);
       setState(() {
-        sharedPreferences.setString("token", jsonData!['token']);
+        sharedPreferences.setString('token', jsonData['access_token']);
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (BuildContext context) => const Home()),
             (route) => false);
